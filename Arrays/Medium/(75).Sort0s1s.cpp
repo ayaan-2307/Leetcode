@@ -1,49 +1,30 @@
 // LeetCode 75. Sort Colors
 
 /*
--------------------------------------------------------
-Approach: Optimal (Dutch National Flag Algorithm)
+=======================================================
+Approach 1: Brute Force (Sorting)
 
 Method:
-- Maintain three pointers: low, mid, and high.
-- Elements before 'low' are 0s, elements after 'high' are 2s,
-  and elements between 'low' and 'mid' are 1s.
-- Traverse the array once, swapping elements into their
-  correct positions based on their value.
+- Sort the array using the built-in sorting algorithm.
+- Since the array contains only 0s, 1s, and 2s,
+  sorting automatically arranges them in order.
 
-Time Complexity: O(n)
+Time Complexity: O(n log n)
 Space Complexity: O(1)
--------------------------------------------------------
+=======================================================
 */
 
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
-        int low = 0, mid = 0, high = nums.size() - 1;
-
-        while (mid <= high) {
-            if (nums[mid] == 0) {
-                swap(nums[mid], nums[low]);
-                low++;
-                mid++;
-            }
-            else if (nums[mid] == 1) {
-                mid++;
-            }
-            else {
-                swap(nums[mid], nums[high]);
-                high--;
-            }
-        }
+        sort(nums.begin(), nums.end());
     }
 };
 
 
-// LeetCode 75. Sort Colors
-
 /*
--------------------------------------------------------
-Approach: Better (Counting)
+=======================================================
+Approach 2: Better (Counting)
 
 Method:
 - Count the number of 0s, 1s, and 2s in one traversal.
@@ -52,7 +33,7 @@ Method:
 
 Time Complexity: O(n)
 Space Complexity: O(1)
--------------------------------------------------------
+=======================================================
 */
 
 class Solution {
@@ -83,26 +64,40 @@ public:
 };
 
 
-
-// LeetCode 75. Sort Colors
-
 /*
--------------------------------------------------------
-Approach: Brute Force (Sorting)
+=======================================================
+Approach 3: Optimal (Dutch National Flag Algorithm)
 
 Method:
-- Sort the array using the built-in sorting algorithm.
-- Since the array contains only 0s, 1s, and 2s,
-  sorting automatically arranges them in order.
+- Maintain three pointers: low, mid, and high.
+- Elements before 'low' are 0s, elements after 'high' are 2s,
+  and elements between 'low' and 'mid' are 1s.
+- Traverse the array once, swapping elements into their
+  correct positions based on their value.
 
-Time Complexity: O(n log n)
+Time Complexity: O(n)
 Space Complexity: O(1)
--------------------------------------------------------
+=======================================================
 */
 
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
-        sort(nums.begin(), nums.end());
+        int low = 0, mid = 0, high = nums.size() - 1;
+
+        while (mid <= high) {
+            if (nums[mid] == 0) {
+                swap(nums[mid], nums[low]);
+                low++;
+                mid++;
+            }
+            else if (nums[mid] == 1) {
+                mid++;
+            }
+            else {
+                swap(nums[mid], nums[high]);
+                high--;
+            }
+        }
     }
 };

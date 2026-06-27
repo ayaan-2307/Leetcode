@@ -1,8 +1,42 @@
 // LeetCode 1. Two Sum
 
 /*
--------------------------------------------------------
-Approach: Optimal (Hash Map)
+=======================================================
+Approach 1: Brute Force
+
+Method:
+- Check every possible pair of elements in the array.
+- If the sum of a pair equals the target, return their
+  indices.
+- Since every pair is examined, this guarantees finding
+  the correct answer if it exists.
+
+Time Complexity: O(n²)
+Space Complexity: O(1)
+=======================================================
+*/
+
+class Solution {
+public:
+    vector<int> twoSum(vector<int>& nums, int target) {
+        int n = nums.size();
+
+        for (int i = 0; i < n; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (nums[i] + nums[j] == target) {
+                    return {i, j};
+                }
+            }
+        }
+
+        return {-1, -1};
+    }
+};
+
+
+/*
+=======================================================
+Approach 2: Optimal (Hash Map)
 
 Method:
 - Traverse the array once while storing each element and
@@ -14,9 +48,9 @@ Method:
 - Otherwise, insert the current element and its index into
   the hash map.
 
-Time Complexity: O(n) average case
+Time Complexity: O(n) (Average Case)
 Space Complexity: O(n)
--------------------------------------------------------
+=======================================================
 */
 
 class Solution {
@@ -32,44 +66,6 @@ public:
             }
 
             mpp[nums[i]] = i;
-        }
-
-        return {-1, -1};
-    }
-};
-
-
-
-
-// LeetCode 1. Two Sum
-
-/*
--------------------------------------------------------
-Approach: Brute Force
-
-Method:
-- Check every possible pair of elements in the array.
-- If the sum of a pair equals the target, return their
-  indices.
-- Since every pair is examined, this guarantees finding
-  the correct answer if it exists.
-
-Time Complexity: O(n²)
-Space Complexity: O(1)
--------------------------------------------------------
-*/
-
-class Solution {
-public:
-    vector<int> twoSum(vector<int>& nums, int target) {
-        int n = nums.size();
-
-        for (int i = 0; i < n; i++) {
-            for (int j = i + 1; j < n; j++) {
-                if (nums[i] + nums[j] == target) {
-                    return {i, j};
-                }
-            }
         }
 
         return {-1, -1};
